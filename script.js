@@ -1,11 +1,15 @@
-computerSelection = caseTransform(getComputerChoice().toUpperCase());
-//Would be modified later to accept user's input
-playerSelection = caseTransform('Rock'.toUpperCase().trim()); 
+// Declare variables
+let computerSelection = caseTransform(getComputerChoice().toUpperCase());
+let playerSelection = caseTransform(prompt('Rock, Paper or Scissors?').toUpperCase().trim()); 
 
+// Log playRound() in console
 console.log(playRound(playerSelection, computerSelection));
-
+5
+// Declare functions
 function playRound(playerSelection, computerSelection) {
-  if ((computerSelection == 'Rock' && playerSelection == 'Scissors') || (computerSelection == 'Paper' && playerSelection == 'Rock') || (computerSelection == 'Scissors' && playerSelection == 'Paper')) {
+  if (!playerSelection || (playerSelection != 'Rock' && playerSelection != 'Paper' && playerSelection != 'Scissors')) {
+    return 'Error';
+  } else if ((computerSelection == 'Rock' && playerSelection == 'Scissors') || (computerSelection == 'Paper' && playerSelection == 'Rock') || (computerSelection == 'Scissors' && playerSelection == 'Paper')) {
     return whoWon('computer');
   } else if (playerSelection == computerSelection) {
     return whoWon();
@@ -46,7 +50,9 @@ function caseTransform(string) {
     return "Rock";
   } else if (string == "PAPER") {
     return "Paper";
-  } else {
+  } else if (string == "SCISSORS") {
     return "Scissors";
+  } else {
+    return;
   }
 }
