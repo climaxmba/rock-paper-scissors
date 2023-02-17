@@ -1,6 +1,4 @@
 // Declare variables
-let computerSelection = caseTransform(getComputerChoice().toUpperCase());
-let playerSelection = caseTransform(prompt('Rock, Paper or Scissors?').toUpperCase().trim());
 let playerScore = 0;
 let computerScore = 0;
 
@@ -10,7 +8,8 @@ game()
 // Declare functions
 function game() {
   for (let i = 0; i < 5; i++) {
-    resetValues();
+    computerSelection = caseTransform(getComputerChoice().toUpperCase());
+    playerSelection = caseTransform(prompt(`Rock, Paper or Scissors? ${5-i} round(s) left`).toUpperCase().trim());
     console.log(playRound(playerSelection, computerSelection));
   }
   if (computerScore > playerScore) {
@@ -51,11 +50,6 @@ function getComputerChoice() {
 
 
 // These are auxilliary functuions
-function resetValues() {
-  computerSelection = caseTransform(getComputerChoice().toUpperCase());
-  playerSelection = caseTransform(prompt('Rock, Paper or Scissors?').toUpperCase().trim());
-}
-
 function whoWon(who) {
   if (who == 'computer') {
     return `You Lose! ${computerSelection} beats ${playerSelection}`;
@@ -65,7 +59,6 @@ function whoWon(who) {
     return "It's a tie!";
   }
 }
-
 
 // This is not the best practice, but i'll get back to it later
 function caseTransform(string) {
