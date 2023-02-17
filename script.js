@@ -7,11 +7,11 @@
 function getComputerChoice() {
   let choice = Math.floor(Math.random() * 3);
   if (choice ==2) {
-    return "ROCK";
+    return "Rock";
   } else if (choice == 1) {
-    return "PAPER";
+    return "Paper";
   } else {
-    return "SCISSORS";
+    return "Scissors";
   }
 }
 
