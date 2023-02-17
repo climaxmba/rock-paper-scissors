@@ -1,26 +1,46 @@
 // Declare variables
 let computerSelection = caseTransform(getComputerChoice().toUpperCase());
-let playerSelection = caseTransform(prompt('Rock, Paper or Scissors?').toUpperCase().trim()); 
+let playerSelection = caseTransform(prompt('Rock, Paper or Scissors?').toUpperCase().trim());
+let playerScore = 0;
+let computerScore = 0;
 
-// Log playRound() in console
-console.log(playRound(playerSelection, computerSelection));
-5
+// Root call
+game()
+
 // Declare functions
+function game() {
+  for (let i = 0; i < 5; i++) {
+    resetValues();
+    console.log(playRound(playerSelection, computerSelection));
+  }
+  if (computerScore > playerScore) {
+    console.log('You lost the game!');
+  } else if (computerScore < playerScore) {
+    console.log('You Won the game!');
+  } else {
+    console.log('It\'s a tie!')
+  }
+  console.log(`Your score: ${playerScore}\nComputer score: ${computerScore}`)
+  return;
+}
+
 function playRound(playerSelection, computerSelection) {
   if (!playerSelection || (playerSelection != 'Rock' && playerSelection != 'Paper' && playerSelection != 'Scissors')) {
     return 'Error';
   } else if ((computerSelection == 'Rock' && playerSelection == 'Scissors') || (computerSelection == 'Paper' && playerSelection == 'Rock') || (computerSelection == 'Scissors' && playerSelection == 'Paper')) {
+    computerScore++
     return whoWon('computer');
   } else if (playerSelection == computerSelection) {
     return whoWon();
   } else {
+    playerScore++
     return whoWon('player');
   }
 }
 
 function getComputerChoice() {
   let choice = Math.floor(Math.random() * 3);
-  if (choice ==2) {
+  if (choice == 2) {
     return "Rock";
   } else if (choice == 1) {
     return "Paper";
@@ -30,12 +50,15 @@ function getComputerChoice() {
 }
 
 
-// These are auxilliary functuions, they where not part of the instructions
-// whoWon() evaluates the winner and returns a string for playRound()
-// caseTransform() will capitalize the first letter
+// These are auxilliary functuions
+function resetValues() {
+  computerSelection = caseTransform(getComputerChoice().toUpperCase());
+  playerSelection = caseTransform(prompt('Rock, Paper or Scissors?').toUpperCase().trim());
+}
+
 function whoWon(who) {
   if (who == 'computer') {
-      return `You Lose! ${computerSelection} beats ${playerSelection}`;
+    return `You Lose! ${computerSelection} beats ${playerSelection}`;
   } else if (who == 'player') {
     return `You Win! ${playerSelection} beats ${computerSelection}`;
   } else {
