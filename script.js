@@ -3,13 +3,13 @@ let playerScore = 0;
 let computerScore = 0;
 
 // Root call
-game()
+game();
 
 // Declare functions
 function game() {
   for (let i = 0; i < 5; i++) {
-    computerSelection = caseTransform(getComputerChoice().toUpperCase());
-    playerSelection = caseTransform(prompt(`Rock, Paper or Scissors? ${5-i} round(s) left`).toUpperCase().trim());
+    computerSelection = transormCase(getComputerChoice().toUpperCase());
+    playerSelection = transormCase(prompt(`Rock, Paper or Scissors? ${5-i} round(s) left`).toUpperCase().trim());
     console.log(playRound(playerSelection, computerSelection));
   }
   if (computerScore > playerScore) {
@@ -19,8 +19,8 @@ function game() {
   } else {
     console.log('It\'s a tie!');
   }
-  console.log(`Your score: ${playerScore}\nComputer score: ${computerScore}`)
-  alert('View results in console')
+  console.log(`Your score: ${playerScore}\nComputer score: ${computerScore}`);
+  alert('View results in console');
   return;
 }
 
@@ -28,13 +28,13 @@ function playRound(playerSelection, computerSelection) {
   if (!playerSelection || (playerSelection != 'Rock' && playerSelection != 'Paper' && playerSelection != 'Scissors')) {
     return 'Error';
   } else if ((computerSelection == 'Rock' && playerSelection == 'Scissors') || (computerSelection == 'Paper' && playerSelection == 'Rock') || (computerSelection == 'Scissors' && playerSelection == 'Paper')) {
-    computerScore++
-    return whoWon('computer');
+    computerScore++;
+    return getWinner('computer');
   } else if (playerSelection == computerSelection) {
-    return whoWon();
+    return getWinner();
   } else {
-    playerScore++
-    return whoWon('player');
+    playerScore++;
+    return getWinner('player');
   }
 }
 
@@ -49,9 +49,7 @@ function getComputerChoice() {
   }
 }
 
-
-// These are auxilliary functuions
-function whoWon(who) {
+function getWinner(who) {
   if (who == 'computer') {
     return `You Lose! ${computerSelection} beats ${playerSelection}`;
   } else if (who == 'player') {
@@ -61,8 +59,7 @@ function whoWon(who) {
   }
 }
 
-// This is not the best practice, but i'll get back to it later
-function caseTransform(string) {
+function transormCase(string) {
   if (string == "ROCK") {
     return "Rock";
   } else if (string == "PAPER") {
