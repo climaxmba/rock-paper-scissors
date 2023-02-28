@@ -5,12 +5,21 @@ let computerScore = 0;
 // Root call
 game();
 
+let buttons = document.querySelectorAll('button');
+
+for (let i = 0; i < buttons.length; i++) {
+  buttons[i].addEventListener("click", () => {
+    console.log(i);
+    playRound(buttons[i].textContent, 'Paper')
+  });
+  // console.log(i);
+}
+
 // Declare functions
 function game() {
   computerSelection = transormCase(getComputerChoice().toUpperCase());
   playerSelection = transormCase(prompt('Rock, Paper or Scissors?').toUpperCase().trim());
   console.log(playRound(playerSelection, computerSelection));
-  
   if (computerScore > playerScore) {
     console.log('You lost the game!');
   } else if (computerScore < playerScore) {
