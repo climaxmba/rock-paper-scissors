@@ -5,14 +5,10 @@ let computerScore = 0;
 // Root call
 game();
 
-let buttons = document.querySelectorAll('button');
+const buttons = document.querySelectorAll('button');
 
 for (let i = 0; i < buttons.length; i++) {
-  buttons[i].addEventListener("click", () => {
-    console.log(i);
-    playRound(buttons[i].textContent, 'Paper')
-  });
-  // console.log(i);
+  buttons[i].addEventListener("click", () => console.log(playRound(buttons[i].textContent, transormCase(getComputerChoice().toUpperCase()))));
 }
 
 // Declare functions
