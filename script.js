@@ -38,14 +38,12 @@ function getComputerChoice() {
 function setRoundWinner(who, playerSelection, computerSelection) {
   if (who == 'computer') {
     roundStatus.textContent = `You Lose! ${computerSelection} beats ${playerSelection}`;
-    return `You Lose! ${computerSelection} beats ${playerSelection}`;
   } else if (who == 'player') {
     roundStatus.textContent = `You Win! ${playerSelection} beats ${computerSelection}`;
-    return `You Win! ${playerSelection} beats ${computerSelection}`;
   } else {
     roundStatus.textContent = "It's a tie!";
-    return "It's a tie!";
   }
+  result.textContent = ` Your score: ${playerScore} Computer score: ${computerScore}`;
 }
 
 function game(playerScore, computerScore) {
@@ -56,5 +54,10 @@ function game(playerScore, computerScore) {
   } else {
     result.textContent = 'It\'s a tie!';
   }
+
   result.textContent = result.textContent + ` Your score: ${playerScore} Computer score: ${computerScore}`;
+  for (let i = 0; i < buttons.length; i++) {
+    buttons[i].disabled = true;
+  };
+  document.getElementById('info').style.visibility = 'hidden';
 }
