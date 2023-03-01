@@ -1,44 +1,26 @@
-// Declare variables
+// Declare variables & constants
 let playerScore = 0;
 let computerScore = 0;
-
-// Root call
-game();
-
+let roundStatus = document.getElementById('round-status');
+let result = document.getElementById('result');
 const buttons = document.querySelectorAll('button');
 
 for (let i = 0; i < buttons.length; i++) {
-  buttons[i].addEventListener("click", () => console.log(playRound(buttons[i].textContent, transormCase(getComputerChoice().toUpperCase()))));
+  buttons[i].addEventListener("click", () => playRound(buttons[i].textContent, getComputerChoice()));
 }
 
 // Declare functions
-function game() {
-  computerSelection = transormCase(getComputerChoice().toUpperCase());
-  playerSelection = transormCase(prompt('Rock, Paper or Scissors?').toUpperCase().trim());
-  console.log(playRound(playerSelection, computerSelection));
-  if (computerScore > playerScore) {
-    console.log('You lost the game!');
-  } else if (computerScore < playerScore) {
-    console.log('You Won the game!');
-  } else {
-    console.log('It\'s a tie!');
-  }
-  console.log(`Your score: ${playerScore}\nComputer score: ${computerScore}`);
-  alert('View results in console');
-  return;
-}
-
 function playRound(playerSelection, computerSelection) {
-  if (!playerSelection || (playerSelection != 'Rock' && playerSelection != 'Paper' && playerSelection != 'Scissors')) {
-    return 'Error';
+  if ((computerScore == 5) || (playerScore == 5)) {
+    game(playerScore, computerScore);
   } else if ((computerSelection == 'Rock' && playerSelection == 'Scissors') || (computerSelection == 'Paper' && playerSelection == 'Rock') || (computerSelection == 'Scissors' && playerSelection == 'Paper')) {
     computerScore++;
-    return getWinner('computer');
+    setRoundWinner('computer', playerSelection, computerSelection);
   } else if (playerSelection == computerSelection) {
-    return getWinner();
+    setRoundWinner();
   } else {
     playerScore++;
-    return getWinner('player');
+    setRoundWinner('player', playerSelection, computerSelection);
   }
 }
 
@@ -53,24 +35,26 @@ function getComputerChoice() {
   }
 }
 
-function getWinner(who) {
+function setRoundWinner(who, playerSelection, computerSelection) {
   if (who == 'computer') {
+    roundStatus.textContent = `You Lose! ${computerSelection} beats ${playerSelection}`;
     return `You Lose! ${computerSelection} beats ${playerSelection}`;
   } else if (who == 'player') {
+    roundStatus.textContent = `You Win! ${playerSelection} beats ${computerSelection}`;
     return `You Win! ${playerSelection} beats ${computerSelection}`;
   } else {
+    roundStatus.textContent = "It's a tie!";
     return "It's a tie!";
   }
 }
 
-function transormCase(string) {
-  if (string == "ROCK") {
-    return "Rock";
-  } else if (string == "PAPER") {
-    return "Paper";
-  } else if (string == "SCISSORS") {
-    return "Scissors";
+function game(playerScore, computerScore) {
+  if (computerScore > playerScore) {
+    result.textContent = 'You lost the game!';
+  } else if (computerScore < playerScore) {
+    result.textContent = 'You Won the game!';
   } else {
-    return;
+    result.textContent = 'It\'s a tie!';
   }
+  result.textContent = result.textContent + ` Your score: ${playerScore} Computer score: ${computerScore}`;
 }
