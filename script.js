@@ -11,9 +11,7 @@ for (let i = 0; i < buttons.length; i++) {
 
 // Declare functions
 function playRound(playerSelection, computerSelection) {
-  if ((computerScore == 5) || (playerScore == 5)) {
-    game(playerScore, computerScore);
-  } else if ((computerSelection == 'Rock' && playerSelection == 'Scissors') || (computerSelection == 'Paper' && playerSelection == 'Rock') || (computerSelection == 'Scissors' && playerSelection == 'Paper')) {
+  if ((computerSelection == 'Rock' && playerSelection == 'Scissors') || (computerSelection == 'Paper' && playerSelection == 'Rock') || (computerSelection == 'Scissors' && playerSelection == 'Paper')) {
     computerScore++;
     setRoundWinner('computer', playerSelection, computerSelection);
   } else if (playerSelection == computerSelection) {
@@ -22,6 +20,7 @@ function playRound(playerSelection, computerSelection) {
     playerScore++;
     setRoundWinner('player', playerSelection, computerSelection);
   }
+  if ((computerScore == 5) || (playerScore == 5)) game(playerScore, computerScore);
 }
 
 function getComputerChoice() {
