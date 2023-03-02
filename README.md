@@ -5,4 +5,3 @@ This is a project of the rock-paper-scissors game from [TheOdinProject](https://
 ## View online
 
 Please click [here](https://climaxmba.github.io/rock-paper-scissors) to view the project online.
-Use your browser's console to view results.
