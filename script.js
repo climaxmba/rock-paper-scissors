@@ -48,15 +48,15 @@ function setRoundWinner(who, playerSelection, computerSelection) {
 function game(playerScore, computerScore) {
   if (computerScore > playerScore) {
     result.textContent = 'You lost the game!';
-  } else if (computerScore < playerScore) {
-    result.textContent = 'You Won the game!';
+    document.querySelector('p.para').textContent = 'Game Over!';
   } else {
-    result.textContent = 'It\'s a tie!';
+    result.textContent = 'You Won the game!';
+    document.querySelector('p.para').textContent = 'Congratulations!';
   }
 
   result.textContent = result.textContent + ` Your score: ${playerScore} Computer score: ${computerScore}`;
   for (let i = 0; i < buttons.length; i++) {
     buttons[i].disabled = true;
-  };
+  }
   document.getElementById('info').style.visibility = 'hidden';
 }

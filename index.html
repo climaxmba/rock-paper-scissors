@@ -4,19 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Rock-Paper-Scissors</title>
 </head>
 <body>
     <h1>Rock-Paper-Scissors</h1>
-    <p>Play against your computer by clicking the buttons!</p>
-    <button>Rock</button>
-    <button>Paper</button>
-    <button>Scissors</button>
-    <div>
+    <p class="para">Play against your computer by clicking the buttons!</p>
+
+    <div id="btns">
+        <button>Rock</button>
+        <button>Paper</button>
+        <button>Scissors</button>
+    </div>
+
+    <div class="para">
         <p id="round-status"></p>
         <p id="result"></p>
         <p id="info">You'll win when you score up to 5 before your computer.</p>
     </div>
+    
     <script src="script.js"></script>
 </body>
 </html>
