@@ -6,13 +6,13 @@ body {
 }
 
 h1 {
-    margin-top: 64px;
+    margin-top: 48px;
 }
 
 .para {
     font-size: x-large;
     font-weight: lighter;
-    padding: 48px 0;
+    margin: 48px 0;
 }
 
 button {
@@ -31,4 +31,35 @@ button:disabled:active {
     border: unset;
     background-color: unset;
     color: unset;
+}
+
+@media (max-width: 600px) {
+    .para {
+        font-size: medium;
+    }
+
+    #btns {
+        display: flex;
+        justify-content: center;
+    }
+
+    button {
+        padding: 32px;
+        gap: 8px;
+        font-size: small;
+    }
+
+    button:active {
+        border: 1px solid white;
+    }
+}
+
+@media (max-width: 320px) {
+    h1 {
+        font-size: large;
+    }
+
+    button {
+        font-size: x-small;
+    }
 }
