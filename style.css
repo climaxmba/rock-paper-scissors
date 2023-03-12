@@ -44,9 +44,9 @@ a {
     gap: 8px;
     margin: 6px 0;
     width: 100%;
-    position: absolute;
+    position: relative;
     bottom: 0;
-    color: #bdbdbd;
+    color: white;
     text-decoration: none;
     font-weight: lighter;
 }
