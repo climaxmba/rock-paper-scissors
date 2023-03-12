@@ -33,6 +33,10 @@ button:disabled:active {
     color: unset;
 }
 
+#reload-btn {
+    padding: 12px;
+}
+
 a {
     display: flex;
     align-items: center;

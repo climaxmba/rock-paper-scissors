@@ -4,10 +4,16 @@ let computerScore = 0;
 let roundStatus = document.getElementById('round-status');
 let result = document.getElementById('result');
 const buttons = document.querySelectorAll('button');
+const reloadBtn = document.createElement('button');
+const infoPara = document.getElementById('info');
 
 for (let i = 0; i < buttons.length; i++) {
   buttons[i].addEventListener("click", () => playRound(buttons[i].textContent, getComputerChoice()));
 }
+
+reloadBtn.addEventListener('click', () => location.reload());
+reloadBtn.id = 'reload-btn';
+reloadBtn.textContent = 'Play Again';
 
 // Declare functions
 function playRound(playerSelection, computerSelection) {
@@ -58,5 +64,7 @@ function game(playerScore, computerScore) {
   for (let i = 0; i < buttons.length; i++) {
     buttons[i].disabled = true;
   }
-  document.getElementById('info').style.visibility = 'hidden';
+
+  infoPara.textContent = '';
+  infoPara.appendChild(reloadBtn);
 }
